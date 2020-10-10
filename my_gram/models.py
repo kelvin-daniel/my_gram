@@ -8,18 +8,39 @@ class Image(models.Model):
     category = models.ForeignKey('category', on_delete=models.CASCADE,)
     location = models.ForeignKey('location', on_delete=models.CASCADE,)
     image = CloudinaryField('image')
+
+    @classmethod
+    def update_image(cls,id,value):
+        cls.objects.filter(id=id).update(image=value)
     def save_image(self):
         self.save()
-    def update_image(self):
-        self.update()
     def delete_image(self):
         self.delete()
-
+    @classmethod
+    def get_all_images(cls):
+        images = cls.objects.all()
+        return images
+    @classmethod
+    def get_image_by_id(cls,id):
+        image = cls.objects.filter(id=id).all()
+        return image
+    @classmethod
+    def search_by_category(cls,category):
+        images = Image.objects.filter(category__name__icontains=category)
+        return images
+    @classmethod
+    def filter_by_location(cls, location):
+        location = cls.objects.filter(location__id=location)
+        return location
     class Meta:
         verbose_name='Image'
         verbose_name_plural='Images'
+        
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = ['name']
+
 
 class Category(models.Model):
     category= models.CharField(max_length=20)
