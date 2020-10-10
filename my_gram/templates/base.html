@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+  <title>Picsabay| {{title}}</title>
+  {% else %}
+    <title>Picsabay</title>
+  {% endif %}
+
+  {% block styles %}
+    {% bootstrap_css %}
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|Roboto:300,400,700|PT+Sans:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <!-- Custom Theme files -->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  {% endblock %}
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% block content %}
+
+    {%endblock%}  
+
+    {% block scripts %}
+    <script>
+      function myFunction() {
+        var copyText = document.getElementById("link");
+        copyText.select();
+        document.execCommand("Copy");
+        alert("Copied the text: " + copyText.value);
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+    function copy(ids) {
+        var textCopied = document.getElementById(ids);
+        text = textCopied.src;
+        var elementary = document.createElement("input");
+        document.body.appendChild(elementary);
+        elementary.setAttribute('value', text);
+        elementary.select();
+        document.execCommand("copy");
+        document.body.removeChild(elementary);
+        alert("Copied: " + textCopied.src);
+    }
+
+    </script>
+      {% bootstrap_javascript %}
+      <script src="{% static 'js/scripts.js' %}"></script>
+
+    {% endblock %}
+</body>
+</html>

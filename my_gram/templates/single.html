@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+
+{{block.super}}
+
+
+<!-- Landing Page -->
+<div class="banner-1">
+    <div class="cover-1">
+        <h2>{{image.image_category.name}} Category</h2>
+        <div class="container imageloc">
+            <form class="form" role="search" action="{% url 'search_image' %}">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+                  <br>
+                 </div>
+                 <small>Trending searches: fashion, travel</small>
+              </form>
+          </div>
+      </div>
+  </div>
+
+
+<!-- displaying image -->
+<div class="container wrap">
+    <div class="row">
+         <div class="col-md-8">
+             <div class="portfolio-wrap ">
+                 <div class="portfolio-wrap">
+                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                         <img src="{{image.picture.cdn_url}}" href="" class="image" alt="Image" >
+                     </a>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-4">
+             <h4>{{image.name}}</h4>
+             <p class="text-muted">{{image.image_category}} | {{image.image_location}}</p>
+             <p>{{image.description}}</p>
+         </div>
+     </div>
+</div>
+
+<!-- Displaying related images -->
+<div class="container-fluid wrap">
+    <h4 class="text-center"> View Related Images </h4>
+    <hr>
+    <!-- Looping through images -->
+    <div class="row">
+    {% for image in image_category %}
+         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+             <div class="portfolio-wrap ">
+                 <div class="portfolio-wrap hovereffect">
+                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%" >
+                         <img src="{{image.picture.cdn_url}}" href="" class="image" alt="Image" >
+                         <div class="overlay">
+                             <h4>
+                                 <a href="/image/{{image.image_category.name}}/{{image.id}}">
+                                     {{image.name}}
+                                 </a>
+                             </h4>
+                         </div>
+                     </a>
+                 </div>
+             </div>
+         </div>
+    {% empty %}
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <img src="" alt="">
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <h2 class="text-center"> Sorry no related images are comming soon.</h2>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% load bootstrap4 %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        {% block styles %}
+          {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="navMain">
+        <div class="container navigation header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+              <a class="navbar-brand" href="/"><img src="{% static 'images/cam5.png' %}" class="" style="width:30px"> Sunsplash</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active"><a class="nav-link" href="/"> HOME <span class="sr-only">(current)</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="/" data-toggle="modal" data-target="#about">ABOUT</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/#category">CATEGORY</a></li>
+                  <li class="nav-item"><a class="nav-link open-nav" style="cursor:pointer">LOCATION</a></li>
+                </ul>
+                <ul class="navbar-nav left">
+                    <a class="nav-item nav-link ml-auto social" href="https://github.com/SophiaNM" target="_blank"><i class="fab fa-github"></i></a>
+                    <a class="nav-item nav-link ml-auto social" href="https://www.linkedin.com/in/sophia-njeri-murage-b14073b5/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="nav-item nav-link ml-auto social" href="https://twitter.com/MurageSophia" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="nav-item nav-link ml-auto social" href="https://www.facebook.com/sophianjeri.murage.9" target="_blank"><i class="fab fa-facebook"></i></a>
+                </ul>
+              </div>
+          </div>
+    </nav>
+    <!-- End of main navbar -->
+
+    <!-- About Modal -->
+    <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title about"><img src="{% static 'images/cam5.png' %}" class="" style="width:30px"> SUNSPLASH</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container row">
+                        <p class="abt">
+                            Sunsplash is an application of beautiful images with a splash of color.
+                            <br>
+                        <p class="abt">
+                            Search for photoghraphs on interest based on various categories and view the pictures by location.
+                        </p>
+                        </p>
+                        <div class="">
+
+                            <img src="{% static 'images/spalsh.jpg' %}" alt="" class = "splash">
+                        </div>
+                        <hr>
+                        <blockquote class="text-muted abt">
+                            ~Perfection is achieved not when there is nothing more to add but when there is nothing left to take away ~ Antoine de Saint-Exupery
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of about modal -->
+
+    <!-- Location side navebar -->
+    <div id="sideNav" class="nav-side">
+        <a href="javascript:void(0)" class="close-nav">&times;</a>
+        <a href="#" data-toggle="modal" data-target="#about">About</a>
+        <a>Locations:</a>
+        {% for location in locations %}
+        <a href="/location/{{location.id}}">{{location.name}}</a>
+        {% empty %}
+        <a href="#">There are no locations</a>
+        {% endfor %}
+        <hr>
+        <div class="locations">
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-12 social-buttons">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a
+                                href="https://twitter.com/MurageSophia" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="tooltip-test" title="follow me"
+                                href="https://www.facebook.com/sophianjeri.murage.9" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="tooltip-test" title="follow me"
+                                href="https://github.com/SophiaNM" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="tooltip-test" title="follow me"
+                                href="https://www.linkedin.com/in/sophia-njeri-murage-b14073b5/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <p>Copyright &copy; 2018 All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of side navbar -->
+    </body>
+</html>
