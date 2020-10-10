@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from models import Image,Category,Location
+from .models import Image,Category,Location
 from django.http import HttpResponse,Http404
 
 # views
@@ -7,7 +7,7 @@ def index(request):
     location= Location.objects.all()
     images= Image.objects.all()
     title='Picsabay'
-    return render(request, 'index.html',{'title':title,'images':images, 'location':location}})
+    return render(request, 'index.html',{'title':title,'images':images, 'location':location})
 
 
 def location_filter(request, image_location):
