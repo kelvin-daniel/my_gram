@@ -10,12 +10,15 @@ class Image(models.Model):
     image = CloudinaryField('image')
 
     @classmethod
-    def update_image(cls,id,value):
+    def update_image(cls, id, value):
         cls.objects.filter(id=id).update(image=value)
+
     def save_image(self):
         self.save()
+
     def delete_image(self):
         self.delete()
+
     @classmethod
     def get_all_images(cls):
         images = cls.objects.all()
@@ -24,18 +27,20 @@ class Image(models.Model):
     def get_image_by_id(cls,id):
         image = cls.objects.filter(id=id).all()
         return image
+
     @classmethod
     def search_by_category(cls,category):
-        images = Image.objects.filter(category__name__icontains=category)
+        images = cls.objects.filter(category__name__icontains = category)
         return images
+        
     @classmethod
     def filter_by_location(cls, location):
-        location = cls.objects.filter(location__id=location)
-        return location
+        image_location = Image.objects.filter(location__name=location)
+        return image_location
     class Meta:
         verbose_name='Image'
         verbose_name_plural='Images'
-        
+
     def __str__(self):
         return self.name
     class Meta:
@@ -43,33 +48,39 @@ class Image(models.Model):
 
 
 class Category(models.Model):
-    category= models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
     @classmethod
     def get_category_id(cls, id):
         category=Category.objects.get(pk = id)
         return category
     def __str__(self):
         return self.name
+
     def save_category(self):
         self.save()
+
     def update_category(self, update):
         self.name = update
         self.save()
+
     def delete_category(self):
         self.delete()
 
 class Location(models.Model):
-    name= models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     @classmethod
-    def get_location_id(cls, id):
-        location = Location.objects.get(pk = id)
-        return location
+    def get_locations(cls):
+        locations = Location.objects.all()
+        return locations
+
     def __str__(self):
         return self.name
+
     def save_location(self):
         self.save()
-    def update_location(self, update):
-        self.name = update
-        self.save()
+
+    @classmethod
+    def update_location(cls, id, value):
+        cls.objects.filter(id=id).update(image=value)
     def delete_location(self):
         self.delete()

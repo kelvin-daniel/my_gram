@@ -1,6 +1,12 @@
 runs:
 	./manage.py runserver
 
+check:
+	./manage.py check
+
+test:
+	./manage.py test my_gram
+	
 superuser:
 	./manage.py createsuperuser --username $(name)
 

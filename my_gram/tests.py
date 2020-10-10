@@ -5,14 +5,13 @@ from .models import Image,Category,Location
 class TestImage(TestCase):
     def setUp(self):
         #location test
-        self.locashon=Location(name='Mali')
-        self.locashon.save_location()
+        self.location=Location(name='Mali')
+        self.location.save_location()
         #category test
-        self.categry= Category(category='art')
-        self.categry.save_category()
+        self.category= Category(name ='art')
+        self.category.save_category()
         #image test
-        self.image = Image(name='creekidy', description='creekidy rock on creek road', category=self.categry, location=self.locashon)
-        self.image.save_image()
+        self.image = Image(name='creekidy', id=1, description='creekidy rock on creek road', category=self.category, location=self.location)
 
     def test_save_image(self):
         self.image.save()
@@ -28,9 +27,9 @@ class TestImage(TestCase):
         self.assertTrue(len(images)==0)
 
     def tearDown(self):
-        self.image.delete_image()
-        self.categry.delete_category()
-        self.locashon.delete_location()
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
 
     def test_get_all_images(self):
         images = Image.get_all_images()
@@ -44,10 +43,10 @@ class TestImage(TestCase):
         images = Image.search_by_category('art')
         self.assertTrue(len(images)>0)
 
-    def test_filter_by_location(self):
-        images = Image.fil0ter_by_location('1')
-        print(images)
-        self.assertTrue(len(images)>0)
+    def test_search_image_by_location(self):
+        self.image_test.save_image()
+        found_images = self.image_test.filter_by_location(location='mali')
+        self.assertTrue(len(found_images) == 1)
     
     # def test_update_image(self):
     #     self.image.save_image()
@@ -60,50 +59,48 @@ class TestImage(TestCase):
 
 class CategoryTestClass(TestCase):
     def setUp(self):
-        self.categry = Category(name="art")
-        self.categry.save_category()
+        self.category = Category(name="art")
+        self.category.save_category()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.categry, Category))
+        self.assertTrue(isinstance(self.category, Category))
 
     def test_save_method(self):
-        self.categry.save_category()
+        self.category.save_category()
         category = Category.objects.all()
         self.assertTrue(len(category) > 0)
 
     def test_delete_method(self):
-        self.categry.save_category()
-        self.categry.delete_category()
+        self.category.delete_category()
         category = Category.objects.all()
         self.assertTrue(len(category) == 0)
 
     def test_update(self):
-        category = Category.get_category_id(self.categry.id)
-        category.update_category('paint')
-        category = Category.get_category_id(self.categry.id)
-        self.assertTrue(category.name == 'Paint')
+        new_category = 'paint'
+        self.category.update_category(self.category.id, new_category)
+        changed_category = Category.objects.filter(name='paint')
+        self.assertTrue(len(changed_category) > 0)
 
 class LocationTestCLass(TestCase):
     def setUp(self):
-        self.locashon = Location(name="bahamas")
-        self.locashon.save_location()
+        self.location = Location(name="mali")
+        self.location.save_location()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.locashon,Location))
+        self.assertTrue(isinstance(self.location,Location))
 
     def test_save_method(self):
-        self.locashon.save_location()
+        self.location.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
 
     def test_delete_method(self):
-        self.locashon.save_location()
-        self.locashon.delete_location()
+        self.location.delete_location()
         location = Location.objects.all()
         self.assertTrue(len(location) == 0)
 
-    def test_update(self):
-        location = Location.get_location_id(self.locashon.id)
-        location.update_location('panama')
-        location = Location.get_location_id(self.locashon.id)
-        self.assertTrue(location.name == 'panama')
+    def test_update_location(self):
+        new_location = 'bahamas'
+        self.location.update_location(self.location.id, new_location)
+        changed_location = Location.objects.filter(name='bahamas')
+        self.assertTrue(len(changed_location) > 0)
