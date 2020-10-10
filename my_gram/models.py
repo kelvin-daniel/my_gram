@@ -32,11 +32,19 @@ class Category(models.Model):
         pass
 
 class Location(models.Model):
-    name= models.CharField(max_length=20)
+    name= models.CharField(max_length=30)
+    @classmethod
+    def get_location_id(cls, id):
+        location = Location.objects.get(pk = id)
+        return location
+    def __str__(self):
+        return self.name
+
     def save_location(self):
         self.save()
-    def update_location(self):
-        self.update()
+    def update_location(self, update):
+        self.name = update
+        self.save()
     def delete_location(self):
         self.delete()
         pass
