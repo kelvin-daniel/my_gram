@@ -35,7 +35,7 @@ class Image(models.Model):
         
     @classmethod
     def filter_by_location(cls, location):
-        image_location = Image.objects.filter(location__name=location)
+        image_location = Image.objects.filter(location__name=location).all()
         return image_location
     class Meta:
         verbose_name='Image'
@@ -59,10 +59,6 @@ class Category(models.Model):
     def save_category(self):
         self.save()
 
-    def update_category(self, update):
-        self.name = update
-        self.save()
-
     def delete_category(self):
         self.delete()
 
@@ -82,5 +78,6 @@ class Location(models.Model):
     @classmethod
     def update_location(cls, id, value):
         cls.objects.filter(id=id).update(image=value)
+
     def delete_location(self):
         self.delete()

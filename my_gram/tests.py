@@ -44,8 +44,8 @@ class TestImage(TestCase):
         self.assertTrue(len(images)>0)
 
     def test_search_image_by_location(self):
-        self.image_test.save_image()
-        found_images = self.image_test.filter_by_location(location='mali')
+        self.image.save_image()
+        found_images = self.image.filter_by_location(location='mali')
         self.assertTrue(len(found_images) == 1)
     
     # def test_update_image(self):
@@ -74,12 +74,6 @@ class CategoryTestClass(TestCase):
         self.category.delete_category()
         category = Category.objects.all()
         self.assertTrue(len(category) == 0)
-
-    def test_update(self):
-        new_category = 'paint'
-        self.category.update_category(self.category.id, new_category)
-        changed_category = Category.objects.filter(name='paint')
-        self.assertTrue(len(changed_category) > 0)
 
 class LocationTestCLass(TestCase):
     def setUp(self):
