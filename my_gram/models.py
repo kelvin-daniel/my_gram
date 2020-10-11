@@ -10,8 +10,8 @@ class Image(models.Model):
     image = CloudinaryField('image')
 
     @classmethod
-    def update_image(cls, id, value):
-        cls.objects.filter(id=id).update(image=value)
+    def update_image(self):
+        self.update()
 
     def save_image(self):
         self.save()
@@ -59,6 +59,10 @@ class Category(models.Model):
     def save_category(self):
         self.save()
 
+    @classmethod
+    def update_category(self):
+        self.update()
+
     def delete_category(self):
         self.delete()
 
@@ -76,8 +80,8 @@ class Location(models.Model):
         self.save()
 
     @classmethod
-    def update_location(cls, id, value):
-        cls.objects.filter(id=id).update(image=value)
+    def update_location(self):
+        self.update()
 
     def delete_location(self):
         self.delete()
