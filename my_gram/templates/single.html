@@ -12,7 +12,7 @@
         <div class="container imageloc">
             <form class="form" role="search" action="{% url 'search_image' %}">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="category">
                   <br>
                  </div>
                  <small>Try: Nature, travel...</small>
@@ -36,7 +36,7 @@
          </div>
          <div class="col-md-4">
              <h4>{{image.name}}</h4>
-             <p class="text-muted">{{image.image_category}} | {{image.image_location}}</p>
+             <p class="text-muted">{{image.category}} | {{image.location}}</p>
              <p>{{image.description}}</p>
          </div>
      </div>
@@ -48,7 +48,7 @@
     <hr>
     <!-- Looping through images -->
     <div class="row">
-    {% for image in image_category %}
+    {% for image in category %}
          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap hovereffect">
@@ -56,7 +56,7 @@
                          <img src="{{image.picture.cdn_url}}" href="" class="image" alt="Image" >
                          <div class="overlay">
                              <h4>
-                                 <a href="/image/{{image.image_category.name}}/{{image.id}}">
+                                 <a href="/image/{{image.category.name}}/{{image.id}}">
                                      {{image.name}}
                                  </a>
                              </h4>

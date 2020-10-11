@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search_image, name='search_image'),
     path('location/<location>', views.location_filter, name='location_filter'),
-    path(r'^image/(?P<category_name>\w+)/(?P<image_id>\d+)',views.single,name = 'single')
+    path('image/<category_name>/<int:image_id>',views.single,name = 'single')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

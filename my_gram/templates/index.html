@@ -14,7 +14,7 @@
             <form class="form" role="search" action="{% url 'search_image' %}">
 
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category" name="image_category">
+                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category" name="category">
                   <br>
                  </div>
 
@@ -71,14 +71,14 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-9 col-lg-9">
-                                <a href="{% url 'single' category_name=image.image_category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.picture.cdn_url}}" class="img-thumbnail" alt="Image" style="cursor:pointer"></a>
+                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.picture.cdn_url}}" class="img-thumbnail" alt="Image" style="cursor:pointer"></a>
 
                             </div>
                             <div class="col-md-3">
                                 <h4 class = "desc">Location</h4>
-                                <p>{{image.image_location.name}}</p>
+                                <p>{{image.location.name}}</p>
                                 <h4 class = "desc">Category</h4>
-                                <p>{{image.image_category.name}}</p>
+                                <p>{{image.category.name}}</p>
                             </div>
                             <div>
                                 <h2 class="desc">{{image.name}}</h2>

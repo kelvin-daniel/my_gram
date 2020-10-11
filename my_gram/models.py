@@ -19,20 +19,22 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def search_image(category):
-        pass
+    def search_image(cls, category):
+        images = cls.objects.filter(category__name__icontains=category)
+        return images
 
     @classmethod
-    def search_by_category(cls,search_term):
-        searched_images = cls.objects.filter(category__icontains = search_term)
+    def search_by_category(cls,category):
+        searched_images = cls.objects.filter(category__icontains = category)
         return searched_images
 
     def get_image_by_id(cls):
         images = cls.objects.get(pk=id)
         return images
     
-    def filter_by_location(location):
-        pass
+    def filter_by_location(cls, location):
+        location = cls.objects.filter(location__id=location)
+        return location
 
     class Meta:
         verbose_name='Image'

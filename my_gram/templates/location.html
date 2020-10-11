@@ -11,7 +11,7 @@
         <div class="container imageloc">
             <form class="form" role="search" action="{% url 'search_image' %}">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="category">
                   <br>
                  </div>
                  <small>Trending searches: fashion, travel</small>
@@ -45,7 +45,7 @@
             <img src="{% static 'images/sorry.png' %}" alt="" class = "oops">
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center"> Sorry no images for {{image.image_location.name}}. Images are comming soon.</h2>
+            <h2 class="text-center"> Sorry no images for {{image.location.name}}. Images are comming soon.</h2>
         </div>
     </div>
     {% endfor %}
@@ -68,9 +68,9 @@
                             </div>
                             <div class="col-md-3">
                                 <h4>Location</h4>
-                                <p>{{image.image_location.name}}</p>
+                                <p>{{image.location.name}}</p>
                                 <h4>Category</h4>
-                                <p>{{image.image_category.name}}</p>
+                                <p>{{image.category.name}}</p>
                             </div>
                             <div>
                                 <h2 class="desc">{{image.name}}</h2>
