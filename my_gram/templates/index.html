@@ -4,8 +4,6 @@
 {% block content %}
 
 {{block.super}}
-
-
 <!-- Landing Page -->
 <div class="banner">
     <div class="cover">
@@ -37,7 +35,7 @@
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
-                             <img src="{{image.picture.cdn_url}}" href="" class="image" alt="Image" >
+                             <img src="{{image.image.url}}" href="" class="image" alt="Photo" style="height: 300px; width: 400px;">
                              <div class="overlay">
                                  <h4>{{image.name}}</h4>
                              </div>
@@ -71,7 +69,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-9 col-lg-9">
-                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.picture.cdn_url}}" class="img-thumbnail" alt="Image" style="cursor:pointer"></a>
+                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Photo" style="cursor:pointer"></a>
 
                             </div>
                             <div class="col-md-3">
@@ -87,14 +85,23 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="copy('img{{image.id}}')">Copy Link</button>
-                        <!-- <input class="form-control" type="text" value="{{image.image_link}}" id="link">
-                       <a onclick="myFunction()"><button type="button"  class="btn btn-primary">Copy Link</button></a> -->
+                        <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url }}" onclick="copyURL(this.value)">Copy URL</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            function copyURL(value){
+              function handler(event){
+                event.clipboardData.setData('text/plain',value);
+                event.preventDefault();
+                document.removeEventListener('copy',handler, true);
+              }
+              document.addEventListener('copy', handler, true);
+              document.execCommand('copy');
+            }
+            </script>
     {% endfor %}
 </div>
 
