@@ -6,9 +6,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('search/', views.search_image, name='search_image'),
+    path('search/', views.search_image, name='search'),
     path('location/<location>', views.location_filter, name='location_filter'),
-    path('image/<category_name>/<int:image_id>',views.single,name = 'single')
+    #path('image/<category_name>/<int:image_id>',views.single,name = 'single')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -4,18 +4,18 @@ from django.http import HttpResponse,Http404
 
 # views
 def index(request):
-    location= Location.objects.all()
     images= Image.objects.all()
+    locations = Location.get_locations()
+    category = Category.get_category()
     title='Picsabay'
-    return render(request, 'index.html',{'title':title,'images':images, 'location':location})
+    return render(request, 'index.html',{'title':title,'images':images, 'locations': locations, 'category': category})
 
 
-def location_filter(request, image_location):
-    locs = Location.get_location_id(image_location)
-    location = Location.objects.all()
-    images = Image.filter_by_location(image_location)
+def location_filter(request, location):
+    images = Image.filter_by_location(location)
+    print(images)
     title = f'Picsabay {location}'
-    return render(request, 'location.html', {'title':title, 'images':images, 'location':location, 'locs':locs})
+    return render(request, 'location.html', {'title':title, 'images':images})
 
 def single(request,category_name,image_id):
     # images
@@ -31,13 +31,12 @@ def single(request,category_name,image_id):
 
 def search_image(request):
     title = 'Search Picsabay'
-    categories = Category.objects.all()
-    locations = Location.objects.all()
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
         found_results = Image.search_by_category(search_term)
         message = f"{search_term}"
-        return render(request, 'search.html',{'title':title,'images': found_results, 'message': message, 'categories': categories, "locations":locations})
+        print(found_results)
+        return render(request, 'search.html',{'title':title,'images': found_results, 'message': message})
     else:
         message = "Didn't find anything to search"
         return render(request, 'search.html',{"message": message})
