@@ -54,9 +54,9 @@ class Category(models.Model):
         self.delete()
 
     @classmethod
-    def get_locations(cls):
-        locations = Location.objects.all()
-        return locations
+    def get_category(cls):
+        category = Category.objects.all()
+        return category
 
     class Meta:
         ordering = ['name']
