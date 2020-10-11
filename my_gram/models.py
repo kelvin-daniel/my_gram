@@ -76,9 +76,9 @@ class Location(models.Model):
     name = models.CharField(max_length=40)
 
     @classmethod
-    def get_locations(cls):
-        locations = Location.objects.all()
-        return locations
+    def get_location_id(cls, id):
+        location = Location.objects.get(pk = id)
+        return location
 
     def __str__(self):
         return self.name
