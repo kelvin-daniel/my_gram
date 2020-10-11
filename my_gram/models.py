@@ -25,7 +25,7 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,category):
-        searched_images = cls.objects.filter(category__icontains = category)
+        searched_images = cls.objects.filter(category_name__icontains = category)
         return searched_images
 
     def get_image_by_id(cls):
@@ -73,7 +73,7 @@ class Category(models.Model):
         return self.name
 
 class Location(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=40)
 
     @classmethod
     def get_locations(cls):

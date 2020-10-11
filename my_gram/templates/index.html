@@ -5,10 +5,10 @@
 
 {{block.super}}
 <!-- Landing Page -->
-<div class="banner">
+<div class="banner" style="background-image: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg');">
     <div class="cover">
         <div class="container image">
-            <h2 id="category">If you can't make it good, at least make it look good.</h2>
+            <h1 id="category" class="text-white">Stunning free images & royalty free stock</h1>
             <form class="form" role="search" action="{% url 'search_image' %}">
 
                 <div class="input-group">
@@ -16,7 +16,7 @@
                   <br>
                  </div>
 
-                 <small>Trending searches: fashion, travel</small>
+                 <small>Popular Images: fashion, travel</small>
 
               </form>
             <p>Taking an image, freezing a moment, reveals how rich reality truly is </p>
@@ -34,7 +34,7 @@
          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
-                         <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                         <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
                              <img src="{{image.image.url}}" href="" class="image" alt="Photo" style="height: 300px; width: 400px;">
                              <div class="overlay">
                                  <h4>{{image.name}}</h4>
@@ -71,7 +71,7 @@
                             <div class="col-md-9 col-lg-9">
                                 <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Photo" style="cursor:pointer"></a>
                             </div>
-                            
+
                             <div class="col-md-3">
                                 <h4 class = "desc">Location</h4>
                                 <p>{{image.location.name}}</p>
