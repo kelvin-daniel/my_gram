@@ -11,7 +11,7 @@ class Image(models.Model):
 
     @classmethod
     def update_image(self):
-        self.update()
+        pass
 
     def save_image(self):
         self.save()
@@ -19,24 +19,21 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    @classmethod
-    def get_all_images(cls):
-        images = cls.objects.all()
-        return images
-    @classmethod
-    def get_image_by_id(cls,id):
-        image = cls.objects.filter(id=id).all()
-        return image
+    def search_image(category):
+        pass
 
     @classmethod
-    def search_by_category(cls,category):
-        images = cls.objects.filter(category__name__icontains = category)
+    def search_by_category(cls,search_term):
+        searched_images = cls.objects.filter(category__icontains = search_term)
+        return searched_images
+
+    def get_image_by_id(cls):
+        images = cls.objects.get(pk=id)
         return images
-        
-    @classmethod
-    def filter_by_location(cls, location):
-        image_location = Image.objects.filter(location__name=location).all()
-        return image_location
+    
+    def filter_by_location(location):
+        pass
+
     class Meta:
         verbose_name='Image'
         verbose_name_plural='Images'
@@ -49,25 +46,23 @@ class Image(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-    @classmethod
-    def get_category_id(cls, id):
-        category=Category.objects.get(pk = id)
-        return category
-    def __str__(self):
-        return self.name
 
     def save_category(self):
         self.save()
 
-    @classmethod
-    def update_category(self):
-        self.update()
-
     def delete_category(self):
         self.delete()
 
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+    def __str__(self):
+        return self.name
+
 class Location(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
+
     @classmethod
     def get_locations(cls):
         locations = Location.objects.all()
@@ -79,9 +74,10 @@ class Location(models.Model):
     def save_location(self):
         self.save()
 
-    @classmethod
-    def update_location(self):
-        self.update()
-
     def delete_location(self):
         self.delete()
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Location'
+        verbose_name_plural = 'Locations'

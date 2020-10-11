@@ -31,23 +31,6 @@ class TestImage(TestCase):
         Location.objects.all().delete()
         Category.objects.all().delete()
 
-    def test_get_all_images(self):
-        images = Image.get_all_images()
-        self.assertTrue(len(images)>0)
-    
-    def test_get_image_by_id(self):
-        images= Image.get_image_by_id(self.image.id)
-        self.assertTrue(len(images) == 1)
-
-    def test_search_by_category(self):
-        images = Image.search_by_category('art')
-        self.assertTrue(len(images)>0)
-
-    def test_search_image_by_location(self):
-        self.image.save_image()
-        found_images = self.image.filter_by_location(location='mali')
-        self.assertTrue(len(found_images) == 1)
-    
     # def test_update_image(self):
     #     self.image.save_image()
     #     image = Image.update_image( self.image.id, 'test update', 'my test',self.loc, self.cat)
@@ -92,9 +75,3 @@ class LocationTestCLass(TestCase):
         self.location.delete_location()
         location = Location.objects.all()
         self.assertTrue(len(location) == 0)
-
-    def test_update_location(self):
-        new_location = 'bahamas'
-        self.location.update_location(self.location.id, new_location)
-        changed_location = Location.objects.filter(name='bahamas')
-        self.assertTrue(len(changed_location) > 0)
