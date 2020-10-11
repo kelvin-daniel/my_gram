@@ -70,8 +70,8 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-9">
                                 <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Photo" style="cursor:pointer"></a>
-
                             </div>
+                            
                             <div class="col-md-3">
                                 <h4 class = "desc">Location</h4>
                                 <p>{{image.location.name}}</p>
@@ -101,6 +101,7 @@
               document.addEventListener('copy', handler, true);
               document.execCommand('copy');
             }
+            alert("Copied: " + value);
             </script>
     {% endfor %}
 </div>
