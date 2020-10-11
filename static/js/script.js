@@ -19,6 +19,7 @@ $(document).ready(function(){
     $('.open-nav').click(function(){
         document.getElementById('sideNav').style.width = "290px";
     })
-    
-
 })
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })

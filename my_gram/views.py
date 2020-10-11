@@ -12,10 +12,12 @@ def index(request):
 
 
 def location_filter(request, location):
+    locations = Location.objects.all()
+    location = Location.get_location_id(location)
     images = Image.filter_by_location(location)
     print(images)
-    title = f'Picsabay {location}'
-    return render(request, 'location.html', {'title':title, 'images':images})
+    title = f'Picsabay| {location}'
+    return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
 
 def single(request,category_name,image_id):
     # images
@@ -37,7 +39,7 @@ def search_image(request):
         search_term = request.GET.get('category')
         found_results = Image.search_by_category(search_term)
         message = f"{search_term}"
-        return render(request, 'search.html',{'title':title,'images': found_results, 'message': message, 'categories': categories, "locations":locations})
+        return render(request, 'search.html',{'title':title, 'images': found_results, 'message': message, 'categories': categories, "locations":locations})
     else:
         message = 'Did not find anything to search'
         return render(request, 'search.html',{"message": message})

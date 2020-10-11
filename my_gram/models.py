@@ -19,13 +19,13 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def search_image(cls, category):
-        images = cls.objects.filter(category__name__icontains=category)
-        return images
+    # def search_image(cls, category):
+    #     images = cls.objects.filter(category__name__icontains=category)
+    #     return images
 
     @classmethod
     def search_by_category(cls,category):
-        searched_images = cls.objects.filter(category_name__icontains = category)
+        searched_images = cls.objects.filter(category__name__icontains=category)
         return searched_images
 
     def get_image_by_id(cls):
