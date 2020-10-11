@@ -47,6 +47,11 @@ class Image(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=20)
 
+    @classmethod
+    def get_category_id(cls, id):
+        category = Category.objects.get(pk = id)
+        return category
+
     def save_category(self):
         self.save()
 
