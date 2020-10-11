@@ -8,9 +8,9 @@
 <div class="banner-1">
     <div class="cover-1">
         {% if images%}
-        <h2>Found {{ images|length}} images for searched term {{message}}</h2>
+        <h2>Found {{ images|length}} in {{message}}</h2>
         {% else %}
-        <h2>Found 0 articles for the search term {{message}}</h2>
+        <h2>Found 0 images matching {{message}}</h2>
         {% endif %}
         <div class="container imageloc">
             <form class="form" role="search" action="{% url 'search_image' %}">
@@ -18,7 +18,7 @@
                   <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
                   <br>
                  </div>
-                 <small>Trending searches: fashion, travel</small>
+                 <small>Try: Nature, travel...</small>
               </form>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <img src="{% static 'images/sorry.png' %}" alt="" class = "oops">
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center"> Sorry no image for {{message}} category. Images are comming soon.</h2>
+            <h2 class="text-center"> Sorry no image for {{message}} category. Images are coming soon.</h2>
         </div>
     </div>
     {% endfor %}

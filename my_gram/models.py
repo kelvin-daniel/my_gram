@@ -53,6 +53,11 @@ class Category(models.Model):
     def delete_category(self):
         self.delete()
 
+    @classmethod
+    def get_locations(cls):
+        locations = Location.objects.all()
+        return locations
+
     class Meta:
         ordering = ['name']
         verbose_name = 'Category'
