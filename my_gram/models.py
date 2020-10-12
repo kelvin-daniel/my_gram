@@ -33,8 +33,8 @@ class Image(models.Model):
         return images
    
     def filter_by_location(cls, location):
-        loc = cls.objects.filter(location__id=location)
-        return loc
+        location = cls.objects.filter(location__id=location)
+        return location
 
     class Meta:
         verbose_name='Image'

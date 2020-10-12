@@ -31,9 +31,6 @@
                      <div class="portfolio-wrap hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
                              <img src="{{image.image.url}}" href="" class="image" alt="Image" >
-                             <div class="overlay">
-                                 <h4>{{image.name}}</h4>
-                             </div>
                          </a>
                      </div>
                  </div>
@@ -45,7 +42,7 @@
             <img src="{% static 'images/sorry.png' %}" alt="" class = "oops">
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center"> Sorry no images for {{image.location.name}}. Images are comming soon.</h2>
+            <h2 class="text-center"> Sorry no images for {{image.location.name}}. Images are coming soon.</h2>
         </div>
     </div>
     {% endfor %}

@@ -11,12 +11,12 @@ def index(request):
     return render(request, 'index.html',{'title':title,'images':images, 'locations': locations, 'category': category})
 
 
-def location_filter(request, location):
+def location_filter(request,location):
     locations = Location.objects.all()
-    location = Location.get_location_id(location)
+    locs = Location.get_location_id(location)
     images = Image.filter_by_location(location)
     title = f'Picsabay| {location}'
-    return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
+    return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'locs':locs})
 
 def single(request,category_name,image_id):
     # images
