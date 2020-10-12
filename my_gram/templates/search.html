@@ -4,20 +4,43 @@
 
 {{block.super}}
 
-<!-- Landing Page -->
-<div class="banner-1">
-    <div class="cover-1">
-        <div class="container imageloc">
-            <form class="form" role="search" action="{% url 'search_image' %}">
-                <div class="input-group">
-                    <input type="text" style="height: 60px;" class="form-control form-control-lg form-control-borderless" placeholder="&#xf3ee;&nbsp; Search categories" name="category">
-                  <br>
+<!--related images -->
+<div class="container-fluid wrap">
+    <h4 class="text-center"> View Related Images </h4>
+    <hr>
+    <!-- Looping through images -->
+    <div class="row">
+    {% for image in category %}
+         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+             <div class="portfolio-wrap ">
+                 <div class="portfolio-wrap hovereffect">
+                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%" >
+                         <img src="{{image.image.url}}" href="" class="image" alt="Image" >
+                         <div class="overlay">
+                             <h4>
+                                 <a href="/image/{{image.category.name}}/{{image.id}}">
+                                     {{image.name}}
+                                 </a>
+                             </h4>
+                         </div>
+                     </a>
                  </div>
-                 <small>Try: Nature, travel...</small>
-              </form>
-        </div>
+             </div>
+         </div>
+    {% empty %}
     </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <img src="" alt="">
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <h2 class="text-center"> Sorry no related images are comming soon.</h2>
+    </div>
+    {% endfor %}
 </div>
+
+
+
+
 {% if images%}
 <h2 class="text-dark text-center">{{message | title}}</h2>
 {% else %}
@@ -32,11 +55,8 @@
          <div class="col-xs-6 col-sm-6  col-md-4 col-lg-3">
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
-                         <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
-                             <img src="{{image.image.url}}" href="" class="image" alt="Image" >
-                             <div class="overlay">
-                                 <h4>{{image.name}}</h4>
-                             </div>
+                         <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
+                             <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" style="height: 300px; width: 400px;">
                          </a>
                      </div>
                  </div>
@@ -55,7 +75,7 @@
 
     <!-- looping through image details modal class -->
     {% for image in images %}
-        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -82,14 +102,24 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <input class="form-control" type="text" value="{{image.image_link}}" id="link"> -->
-                        <button type="button" class="btn btn-secondary" onclick="copy('img{{image.id}}')">Copy Link</button>
-                       <!-- <a onclick="myFunction()"><button type="button"  class="btn btn-primary">Copy Link</button></a> -->
+                        <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url}}" onclick="copyURL(this.value)">Copy URL</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            function copyURL(value){
+              function handler(event){
+                event.clipboardData.setData('text/plain',value);
+                event.preventDefault();
+                document.removeEventListener('copy',handler, true);
+              }
+              document.addEventListener('copy', handler, true);
+              document.execCommand('copy');
+            }
+            alert("Copied: " + value);
+        </script>
     {% endfor %}
 </div>
 
