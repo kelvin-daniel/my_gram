@@ -4,10 +4,17 @@
 
 {{block.super}}
 
-
-<!-- displaying image -->
+<!-- displaying images -->
 <div class="container wrap">
     <div class="row">
+        <div class="col-md-4">
+            <h4>{{image.name}}</h4>
+            <p class="text-muted">{{image.category}} | {{image.location}}</p>
+            <p>{{image.description}}</p>
+            <div class="p-2" style="background-color: #d4d1d1; border-radius: 15px;">
+                <a class="tooltip-test" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github"></i> Follow Picsabay</a>
+            </div>
+        </div>
          <div class="col-md-8">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap">
@@ -15,39 +22,34 @@
                          <img src="{{image.image.url}}" href="#" class="image" alt="Image" >
                      </a>
                  </div>
+                 <!--related images -->
+                <div class="container-fluid wrap">
+                    <div class="row" style="background-color: #d4d1d1;">
+                    {% for image in category %}
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                            <div class="portfolio-wrap ">
+                                <div class="portfolio-wrap hovereffect">
+                                    <a class="img-overlay p-3" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
+                                        <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <img src="" alt="">
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 p-4">
+                        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
+                    </div>
+                    {% endfor %}
+                </div>
              </div>
-         </div>
-         <div class="col-md-4">
-             <h4>{{image.name}}</h4>
-             <p class="text-muted">{{image.category}} | {{image.location}}</p>
-             <p>{{image.description}}</p>
          </div>
      </div>
 </div>
 
-<!--related images -->
-<div class="container-fluid wrap">
-    <div class="row" style="background-color: #d4d1d1;">
-    {% for image in category %}
-         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-             <div class="portfolio-wrap ">
-                 <div class="portfolio-wrap hovereffect">
-                     <a class="img-overlay p-3" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
-                         <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
-                     </a>
-                 </div>
-             </div>
-         </div>
-    {% empty %}
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        <img src="" alt="">
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-6 p-4">
-        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
-    </div>
-    {% endfor %}
-</div>
 
 
 {% endblock %}
