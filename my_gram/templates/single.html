@@ -28,8 +28,8 @@
          <div class="col-md-8">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap">
-                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
-                         <img src="{{image.image.url}}" href="" class="image" alt="Image" >
+                     <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
+                         <img src="{{image.image.url}}" href="#" class="image" alt="Image" >
                      </a>
                  </div>
              </div>
@@ -52,15 +52,8 @@
          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap hovereffect">
-                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%" >
-                         <img src="{{image.image.url}}" href="" class="image" alt="Image" >
-                         <div class="overlay">
-                             <h4>
-                                 <a href="/image/{{image.category.name}}/{{image.id}}">
-                                     {{image.name}}
-                                 </a>
-                             </h4>
-                         </div>
+                     <a class="img-overlay" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
+                         <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
                      </a>
                  </div>
              </div>
@@ -70,8 +63,8 @@
     <div class="col-sm-6 col-md-6 col-lg-6">
         <img src="" alt="">
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> Sorry no related images are comming soon.</h2>
+    <div class="col-sm-6 col-md-6 col-lg-6 p-4">
+        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
     </div>
     {% endfor %}
 </div>

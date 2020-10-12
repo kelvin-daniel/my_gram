@@ -5,17 +5,14 @@
 {{block.super}}
 
 <!--related images -->
-<div class="container-fluid wrap">
-    <h4 class="text-center"> View Related Images </h4>
-    <hr>
-    <!-- Looping through images -->
+<div class="container-fluid wrap" style="background-color: #d4d1d1;">
     <div class="row">
     {% for image in category %}
          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap hovereffect">
-                     <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%" >
-                         <img src="{{image.image.url}}" href="" class="image" alt="Image" >
+                     <a class="img-overlay" data-toggle="#myModal" data-target="#{{image.id}}" style="width:100%" >
+                         <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
                          <div class="overlay">
                              <h4>
                                  <a href="/image/{{image.category.name}}/{{image.id}}">
@@ -32,8 +29,8 @@
     <div class="col-sm-6 col-md-6 col-lg-6">
         <img src="" alt="">
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> Sorry no related images are comming soon.</h2>
+    <div class="col-sm-6 col-md-6 col-lg-6 p-4">
+        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
     </div>
     {% endfor %}
 </div>
@@ -42,9 +39,9 @@
 
 
 {% if images%}
-<h2 class="text-dark text-center">{{message | title}}</h2>
+<h4 class="text-dark text-center p-2">{{message | title}}</h4>
 {% else %}
-<h2>No images in {{message}}</h2>
+<h4>No images in {{message}}</h4>
 {% endif %}
 
 <div class="container wrap">
