@@ -3,31 +3,38 @@ html, body{
     font-size: 100%;
 
 }
-/* Navbar Styling */
 @media screen and (min-width: 992px){
 
 div.container.navigation{
     height: 50px;
 }
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
 nav.navbar.navbar-expand-lg.navbar-light{
-    height: 80px;
-    font-size: 14px;
+    height: 60px;
+    font-size: 10px;
     padding: 10px 18px;
-    text-transform: uppercase;
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     background-color:#fff;
-    font-size: 17px;
+    font-size: 14px;
 
 }
 div#navbarNav.collapse.navbar-collapse{
     width: 100%;
 }
 ul.navbar-nav{
-    padding-left: 240px;
+    padding-left: 5px;
 }
 li.nav-item{
-    padding:0px  20px;
+    padding-right:20px;
 }
 a.navbar-brand.mr-4.brand{
     color: #000;
@@ -192,24 +199,24 @@ div.container.imageloc{
 }
 .banner{
 background: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat 0px 0px;
-background-size:cover;
-background-position: ;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: absolute;
 -webkit-background-size: cover;
 -o-background-size: cover;
 -ms-background-size: cover;
 -moz-background-size: cover;
 min-height: 400px;
+height: 100vh;
 
 }
 .cover{
     min-height: 450px;
     width: inherit;
-    background: rgba(0,0,0,0.8)
 }
 .cover-1{
     min-height: inherit;
     width: inherit;
-    background: rgba(0,0,0,0.8)
 }
 .banner-1{
     background-image: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg'); 
@@ -386,7 +393,6 @@ div.modal-content{
 h5.modal-title{
     margin-left: 160px;
 }
-/* End of Gallery styles */
 
 @media screen and (max-width: 455px){
     .banner{
@@ -426,9 +432,6 @@ h5.modal-title{
     input#link.form-control{
         max-width: 150px;
         overflow: auto;
-    }
-    button.btn.btn-secondary{
-        /* display: none; */
     }
     h5#deleteModalLabel.modal-title{
         margin: 0px;

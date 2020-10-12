@@ -31,10 +31,10 @@ class Image(models.Model):
     def get_image_by_id(cls):
         images = cls.objects.get(pk=id)
         return images
-    
+   
     def filter_by_location(cls, location):
-        location = cls.objects.filter(location__id=location)
-        return location
+        loc = cls.objects.filter(location__id=location)
+        return loc
 
     class Meta:
         verbose_name='Image'
@@ -77,8 +77,8 @@ class Location(models.Model):
 
     @classmethod
     def get_location_id(cls, id):
-        location = Location.objects.get(pk = id)
-        return location
+        locate = Location.objects.get(pk = id)
+        return locate
 
     def __str__(self):
         return self.name

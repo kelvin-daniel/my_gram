@@ -5,22 +5,20 @@
 
 {{block.super}}
 <!-- Landing Page -->
-<div class="banner" style="background-image: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg');">
-    <div class="cover">
+<div class="banner" style="background: linear-gradient(135deg, rgba(22, 22, 22, 0.3) 0%, rgba(15, 15, 15, 0.3) 100%), url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat; background-size: cover;">
+    <div class="cover" style="height: 100vh;">
         <div class="container image">
-            <h1 id="category" class="text-white">Stunning free images & royalty free stock</h1>
-            <form class="form" role="search" action="{% url 'search_image' %}">
+            <h2 id="category" class="text-white mb-2">Stunning free images & royalty free stock</h2>
+            <p class="text-white mt-3 pb-4">Over 1.8 million+ high quality stock images and videos shared by our talented community.</p>
+            <form class="form search_xl" role="search" action="{% url 'search_image' %}">
 
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category" name="category">
+                  <input type="text" style="height: 60px;" class="form-control form-control-lg form-control-borderless" placeholder="&#xf3ee;&nbsp; Search categories" name="category">
                   <br>
                  </div>
-
-                 <small>Popular Images: fashion, travel</small>
-
+                 <p class="mt-2">Popular Images: landscape, travel</p>
+                 <p style="padding-top: 120px;">Free image by Pezibear</p>
               </form>
-            <p>Taking an image, freezing a moment, reveals how rich reality truly is </p>
-            <a href="#gallery">VIEW GALLERY</a>
         </div>
     </div>
 </div>
@@ -35,9 +33,9 @@
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
-                             <img src="{{image.image.url}}" href="" class="image" alt="Photo" style="height: 300px; width: 400px;">
+                             <img src="{{image.image.url}}" href="#myModal" class="image" alt="Photo" style="height: 300px; width: 400px;">
                              <div class="overlay">
-                                 <h4>{{image.name}}</h4>
+                                 <h4 class="card-footer">{{image.category}}</h4>
                              </div>
                          </a>
                      </div>
@@ -57,11 +55,11 @@
 
     <!-- Image details modal -->
     {% for image in images %}
-        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Image Post</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">{{image.name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

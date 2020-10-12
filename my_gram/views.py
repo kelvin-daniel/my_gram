@@ -5,7 +5,7 @@ from django.http import HttpResponse,Http404
 # views
 def index(request):
     images= Image.objects.all()
-    locations = Location.get_locations()
+    locations = Location.objects.all()
     category = Category.get_category()
     title='Picsabay'
     return render(request, 'index.html',{'title':title,'images':images, 'locations': locations, 'category': category})
@@ -15,7 +15,6 @@ def location_filter(request, location):
     locations = Location.objects.all()
     location = Location.get_location_id(location)
     images = Image.filter_by_location(location)
-    print(images)
     title = f'Picsabay| {location}'
     return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
 
