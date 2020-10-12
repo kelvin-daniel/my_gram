@@ -5,23 +5,6 @@
 {{block.super}}
 
 
-<!-- Landing Page -->
-<div class="banner-1">
-    <div class="cover-1">
-        <h2>{{image.category.name}} Category</h2>
-        <div class="container imageloc">
-            <form class="form" role="search" action="{% url 'search_image' %}">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="category">
-                  <br>
-                 </div>
-                 <small>Try: Nature, travel...</small>
-              </form>
-          </div>
-      </div>
-  </div>
-
-
 <!-- displaying image -->
 <div class="container wrap">
     <div class="row">
@@ -42,17 +25,14 @@
      </div>
 </div>
 
-<!-- Displaying related images -->
+<!--related images -->
 <div class="container-fluid wrap">
-    <h4 class="text-center"> View Related Images </h4>
-    <hr>
-    <!-- Looping through images -->
-    <div class="row">
+    <div class="row" style="background-color: #d4d1d1;">
     {% for image in category %}
          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap hovereffect">
-                     <a class="img-overlay" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
+                     <a class="img-overlay p-3" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
                          <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
                      </a>
                  </div>
@@ -68,5 +48,6 @@
     </div>
     {% endfor %}
 </div>
+
 
 {% endblock %}
