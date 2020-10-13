@@ -8,12 +8,12 @@
 <div class="banner" style="background: linear-gradient(135deg, rgba(22, 22, 22, 0.3) 0%, rgba(15, 15, 15, 0.3) 100%), url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat; background-size: cover;">
     <div class="cover" style="height: 100vh;">
         <div class="container image">
-            <h2 id="category" class="text-white mb-2">Stunning free images & royalty free stock</h2>
+            <h2 id="category" class="text-white mt-2 mb-2">Stunning free images & royalty free stock</h2>
             <p class="text-white mt-3 pb-4">Over 1.8 million+ high quality stock images and videos shared by our talented community.</p>
             <form class="form search_xl" role="search" action="{% url 'search_image' %}">
 
                 <div class="input-group">
-                  <input type="text" style="height: 60px;" class="form-control form-control-lg form-control-borderless" placeholder="&#xf3ee;&nbsp; Search categories" name="category">
+                  <input type="text" style="height: 60px; border-radius: 5px;" class="form-control form-control-lg form-control-borderless" placeholder="&#xf3ee;&nbsp; Search categories" name="category">
                   <br>
                  </div>
                  <p class="mt-2">Popular Images: landscape, travel</p>
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<!----site image gallery-->
+<!----all site images-->
 <div class="container wrap">
     <div class="row" id="gallery">
     {% for image in images %}

@@ -29,11 +29,11 @@ class Image(models.Model):
         return searched_images
 
     def get_image_by_id(cls):
-        images = cls.objects.get(pk=id)
+        images = cls.objects.get(all)
         return images
    
-    def filter_by_location(cls, location):
-        location = cls.objects.filter(location__id=location)
+    def filter_by_location(cls,location):
+        location = cls.objects.filter(location__name=location).all()
         return location
 
     class Meta:
@@ -48,11 +48,6 @@ class Image(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-
-    @classmethod
-    def get_category_id(cls, id):
-        category = Category.objects.get(pk = id)
-        return category
 
     def save_category(self):
         self.save()
@@ -76,9 +71,9 @@ class Location(models.Model):
     name = models.CharField(max_length=40)
 
     @classmethod
-    def get_location_id(cls, id):
-        locate = Location.objects.get(pk = id)
-        return locate
+    def get_location_id(cls):
+        location = Location.objects.get(all)
+        return location
 
     def __str__(self):
         return self.name

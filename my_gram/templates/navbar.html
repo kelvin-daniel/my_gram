@@ -25,9 +25,18 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active"><a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a></li>
-                  <li class="nav-item active"><a class="nav-link" href="/" data-toggle="modal" data-target="#about">About</a></li>
-                  <li class="nav-item active"><a class="nav-link" href="/#category">Category</a></li>
-                  <li class="nav-item active"><a class="nav-link open-nav" style="cursor:pointer">Location</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Locations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for location in locations %}
+                        <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
+                        {% empty %}
+                        <a href="#">There are no locations</a>
+                        {% endfor %}
+                    </div>
+                  </li>
                 </ul>
               </div>
           </div>
@@ -38,92 +47,4 @@
             <button class="btn font-weight-bolder btn-warning text-white" style="border-radius: 25px; font-size: 16px;">Explore</button>
         </a>
     </nav>
-    <!-- End of main navbar -->
 
-    <!-- About Modal -->
-    <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title about"><img src="{% static 'images/cam5.png' %}" class="" style="width:30px"> Picsabay</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container row">
-                        <p class="abt">
-                            Picsabay is an application of beautiful images with a splash of color.
-                            <br>
-                        <p class="abt">
-                            Search for photoghraphs on interest based on various categories and view the pictures by location.
-                        </p>
-                        </p>
-                        <div class="">
-
-                            <img src="{% static 'images/spalsh.jpg' %}" alt="" class = "splash">
-                        </div>
-                        <hr>
-                        <blockquote class="text-muted abt">
-                            ~Perfection is achieved not when there is nothing more to add but when there is nothing left to take away ~ Antoine de Saint-Exupery
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of about modal -->
-
-    <!-- Location side navebar -->
-    <div id="sideNav" class="nav-side">
-        <a href="javascript:void(0)" class="close-nav">&times;</a>
-        <a href="#" data-toggle="modal" data-target="#about">About</a>
-        <a>Locations:</a>
-        {% for location in locations %}
-        <a href="/location/{{location.id}}">{{location.name}}</a>
-        {% empty %}
-        <a href="#">There are no locations</a>
-        {% endfor %}
-        <hr>
-        <div class="locations">
-        </div>
-        <div class="footer">
-            <div class="row">
-                <div class="col-md-12 social-buttons">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a
-                                href="" target="_blank">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="tooltip-test" title="follow me"
-                                href="" target="_blank">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="tooltip-test" title="follow me"
-                                href="https://github.com/kelvin-daniel" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="tooltip-test" title="follow me"
-                                href="" target="_blank">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-12">
-                    <p>Copyright &copy; 2020 All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End of side navbar -->
-    </body>
-</html>
