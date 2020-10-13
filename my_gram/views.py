@@ -19,13 +19,12 @@ def locations(request,location):
 
 def single(request,category_name,image_id):
     title='Picsabay'
-    location=Location.objects.all()
     category = Image.objects.filter(category__name = category_name)
     try:
         image = Image.objects.get(id=image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"single.html",{'title':title,"image":image, "locations":location, "category":category})
+    return render(request,"single.html",{'title':title,"image":image,"category":category})
 
 def search_image(request):
     categories = Category.objects.all()
