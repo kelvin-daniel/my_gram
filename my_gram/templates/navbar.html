@@ -26,14 +26,14 @@
                 <ul class="navbar-nav">
                   <li class="nav-item active"><a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a></li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" style="z-index: -1;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Locations
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% for location in locations %}
                         <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
                         {% empty %}
-                        <a href="#">There are no locations</a>
+                        <a class="dropdown-item" href="#">There are no locations</a>
                         {% endfor %}
                     </div>
                   </li>

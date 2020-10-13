@@ -12,10 +12,10 @@ def index(request):
 
 
 def locations(request,location):
-    locs = Location.objects.all()
+    locations = Location.objects.all()
     images = Image.filter_by_location(location)
     title = f'Picsabay| {location}'
-    return render(request, 'location.html', {'title':title, 'images':images, 'locs':locs})
+    return render(request, 'location.html', {'title':title, 'images':images, 'locations': locations})
 
 def single(request,category_name,image_id):
     title='Picsabay'
@@ -25,7 +25,7 @@ def single(request,category_name,image_id):
         image = Image.objects.get(id=image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"single.html",{'title':title,"image":image, "location":location, "category":category})
+    return render(request,"single.html",{'title':title,"image":image, "locations":location, "category":category})
 
 def search_image(request):
     categories = Category.objects.all()

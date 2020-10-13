@@ -19,21 +19,17 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    # def search_image(cls, category):
-    #     images = cls.objects.filter(category__name__icontains=category)
-    #     return images
-
     @classmethod
     def search_by_category(cls,category):
         searched_images = cls.objects.filter(category__name__icontains=category)
         return searched_images
 
     def get_image_by_id(cls):
-        images = cls.objects.get(all)
+        images = cls.objects.all()
         return images
    
     def filter_by_location(cls,location):
-        location = cls.objects.filter(location__name=location).all()
+        location = Image.objects.filter(location__name=location).all()
         return location
 
     class Meta:
@@ -72,7 +68,7 @@ class Location(models.Model):
 
     @classmethod
     def get_location_id(cls):
-        location = Location.objects.get(all)
+        location = Location.objects.all()
         return location
 
     def __str__(self):

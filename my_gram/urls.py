@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search_image, name='search_image'),
-    path('location/<location>/', views.locations, name='location_filter'),
+    path('location/<location>/', views.locations, name='locations'),
     path('image/<category_name>/<int:image_id>',views.single,name = 'single')
 ]
 if settings.DEBUG:
