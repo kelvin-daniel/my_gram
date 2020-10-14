@@ -2,7 +2,7 @@
 This is a django app built to mimic pixabay using different technologies I've learnt. User can upload images in different categories and the location they were taken in.
 
 ## Deployed Site Link
-[Picsabay](https://picasabay.herokuapp.com/)
+[Picsabay](https://picsabay.herokuapp.com/)
 
 ## User Stories
 - View different photos.
