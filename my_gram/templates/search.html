@@ -32,14 +32,12 @@
 {% if images%}
 <h4 class="text-dark text-center mt-2 p-2">{{message | title}}</h4><hr>
 {% else %}
-<h4>No images in {{message}}</h4>
+<hr>
 {% endif %}
 
 <div class="container wrap">
-    <!-- Looping through images -->
     <div class="row">
     {% for image in images %}
-        <!-- displaying images -->
          <div class="col-xs-6 col-sm-6  col-md-4 col-lg-3">
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
@@ -53,10 +51,11 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <img src="{% static 'images/sorry.png' %}" alt="" class = "oops">
+            <hr>
+            <img src="https://i.pinimg.com/originals/9a/58/2e/9a582e0588aa845b3a784d8c0da382bd.gif" alt="" class = "sorry">
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center"> Sorry no image for {{message}} category. Images are coming soon.</h2>
+            <h2 class="text-center"> Sorry no image for <strong>{{message}}</strong> category. <br><br> Try <strong>landscape</strong>.</h2>
         </div>
     </div>
     {% endfor %}

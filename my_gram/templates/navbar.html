@@ -1,47 +1,31 @@
 {% load bootstrap4 %}
 {% load static%}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        {% block styles %}
-          {% bootstrap_css %}
-        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/index.css' %}">
-        {% endblock %}
-    </head>
-    <body>
-
-
-    <!-- Main Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" id="navMain">
-        <a class="navbar-brand pl-3" href="/"><img src="https://pp.netclipart.com/pp/s/117-1174114_commons-a-resource-for-biological-analysis-pc-logo.png" class="" style="width:30px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav" style="padding-left: 100px;">
-            <ul class="float-right navbar-nav mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" aria-haspopup="true" style="z-index: -1;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Locations
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% for location in locations %}
-                    <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
-                    {% empty %}
-                    <a class="dropdown-item" href="/">No Locations in This View</a>
-                    {% endfor %}
-                </div>
-                </li>
-                <li><a href="#">
-                  <button class="float-right btn font-weight-bolder btn-warning text-white" id="explore" style="border-radius: 25px; font-size: 16px;">Explore</button></a></li>
-                <li><a class="nav-item nav-link ml-auto social" id="git" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github fa-2x"></i>&nbsp;</a>
-                </li>
-            </ul>
+<nav class="navbar navbar-expand-lg navbar-light" id="navMain">
+  <a class="navbar-brand pl-3" href="/"><img src="https://pp.netclipart.com/pp/s/117-1174114_commons-a-resource-for-biological-analysis-pc-logo.png" class="" style="width:30px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="padding-left: 0px;">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" aria-haspopup="true" style="z-index: -1;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Locations
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for location in locations %}
+              <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
+              {% empty %}
+              <a class="dropdown-item" href="/">No Locations in This View</a>
+              {% endfor %}
           </div>
-      </div>
+          </li>
+          <li><a href="#">
+            <button class="btn font-weight-bolder btn-warning text-white" id="explor" style="border-radius: 25px; font-size: 16px;">Explore</button></a></li>
+          <li><a class="nav-item nav-link ml-auto social" id="giti" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github fa-2x"></i>&nbsp;</a>
+          </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
