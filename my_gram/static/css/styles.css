@@ -1,12 +1,13 @@
 html, body{
     font-family: 'Raleway', sans-serif;
     font-size: 100%;
+    background: #000;
 
 }
 @media screen and (min-width: 992px){
 
 div.container.navigation{
-    height: 50px;
+    height: 0px;
 }
 .form-control-borderless {
     border: none;
@@ -146,10 +147,6 @@ div.navbar-nav.ml-auto{
     font-size: 15px;
 }
 
-/* End of Navbar Styles */
-
-/* Styles for the home page*/
-/*-- Header --*/
 form.form{
     width: 70%;
     border-radius: 0px;
@@ -179,24 +176,14 @@ small{
     float: left !important;
     margin-right: -15px;
 }
-/* End of Header */
 
-
-/*--Banner--*/
 div.container.image{
     padding: 6em 0 0;
 }
 div.container.imageloc{
     padding: 4em 0 0;
 }
-.banner h2{
-    padding-bottom: 20px;
-}
-.banner-1 h2{
-    color: #c3c3c3;
-    text-align: center;
-    padding-top: 40px;
-}
+
 .banner{
 background: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat 0px 0px;
 background-size: cover;
@@ -256,10 +243,7 @@ height: 100vh;
     margin: 5em auto 1em;
     width: 70%;
 }
-/* End of Banner */
 
-
-/* Image Gallery Section */
 .oops{
     text-align: center;
     width: 100%;
@@ -328,13 +312,16 @@ h5.modal-title{
 
 @media screen and (max-width: 455px){
     .banner{
-        min-height: 600px;
+        height: 60vh;
     }
     .cover{
         min-height: 600px;
     }
     h2#category{
         font-size: 28px;
+    }
+    #sings{
+        display: none;
     }
     .abt{
         margin: 0px;
@@ -375,16 +362,33 @@ h5.modal-title{
 }
 
 
-/* Responsive Design Styling */
-@media screen and (min-width: 340px) and (max-width: 455px){
+@media screen and (min-width: 320px) and (max-width: 455px){
     h2#category{
         font-size: 28px;
+    }
+    .banner{
+        height: 60vh;
+    }
+    p.banner{
+        display: none;
     }
     .abt{
         margin: 0px;
     }
+    #sings{
+        display: none;
+    }
+    #explore{
+        display: none;
+    }
+    #git{
+        display: none;
+    }
     h5.modal-title.about{
         margin: 0px;
+    }
+    #sings{
+        display: none;
     }
     div.modal-dialog{
         max-width: 340px;
@@ -435,6 +439,9 @@ h5.modal-title{
     }
     h5.modal-title.about{
         margin: 0px;
+    }
+    #sings{
+        display: none;
     }
     div.modal-dialog{
         max-width: 454px;

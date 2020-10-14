@@ -18,33 +18,30 @@
     <!-- Main Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="navMain">
         <a class="navbar-brand pl-3" href="/"><img src="https://pp.netclipart.com/pp/s/117-1174114_commons-a-resource-for-biological-analysis-pc-logo.png" class="" style="width:30px"></a>
-        <div class="container pl-3 navigation header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active"><a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a></li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="z-index: -1;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Locations
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for location in locations %}
-                        <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
-                        {% empty %}
-                        <a class="dropdown-item" href="#">No Locations in This View</a>
-                        {% endfor %}
-                    </div>
-                  </li>
-                </ul>
-              </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" style="padding-left: 100px;">
+            <ul class="float-right navbar-nav mr-auto">
+              <li class="nav-item active"><a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" aria-haspopup="true" style="z-index: -1;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Locations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for location in locations %}
+                    <a class="dropdown-item" href="location/{{location.name}}">{{location.name}}</a>
+                    {% empty %}
+                    <a class="dropdown-item" href="/">No Locations in This View</a>
+                    {% endfor %}
+                </div>
+                </li>
+                <li><a href="#">
+                  <button class="float-right btn font-weight-bolder btn-warning text-white" id="explore" style="border-radius: 25px; font-size: 16px;">Explore</button></a></li>
+                <li><a class="nav-item nav-link ml-auto social" id="git" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github fa-2x"></i>&nbsp;</a>
+                </li>
+            </ul>
           </div>
-          <ul class="navbar-nav left p-4 mt-4">
-            <a class="nav-item nav-link ml-auto social float-right" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github fa-2x"></i>&nbsp;</a>
-        </ul>
-        <a href="#gallery">
-            <button class="btn font-weight-bolder btn-warning text-white" style="border-radius: 25px; font-size: 16px;">Explore</button>
-        </a>
-    </nav>
+      </div>
+</nav>
 

@@ -6,13 +6,13 @@
 
 <!--related images -->
 <div class="container-fluid wrap" >
-    <div class="row" style="background-color: #d4d1d1;">
+    <div class="row" style="background-color: #e9e3e3;">
     {% for image in images %}
-         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+         <div class="flex-grid col-xs-6 col-sm-6 col-md-4 col-lg-3">
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap hovereffect">
-                     <a class="img-overlay" data-toggle="#myModal" data-target="#{{image.id}}" style="width:100%" >
-                         <img src="{{image.image.url}}" href="#myModal" class="image pt-3" alt="Image" style="height: 150px; width: 100%;">
+                     <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%" >
+                         <img src="{{image.image.url}}" href="#myModal" class="image pt-3" alt="Image img-fluid img-thumbnail" style="height: 150px; width: 100%; border-radius: 5px;">
                      </a>
                  </div>
              </div>
@@ -23,16 +23,14 @@
         <img src="" alt="">
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6 p-4">
-        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
+        <h5 class="text-center"> : (&nbsp; No Related Images</h5>
     </div>
     {% endfor %}
 </div>
 
 
-
-
 {% if images%}
-<h4 class="text-dark text-center p-2">{{message | title}}</h4>
+<h4 class="text-dark text-center mt-2 p-2">{{message | title}}</h4><hr>
 {% else %}
 <h4>No images in {{message}}</h4>
 {% endif %}
@@ -46,7 +44,7 @@
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
-                             <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" style="height: 300px; width: 400px;">
+                             <img src="{{image.image.url}}" href="#myModal" class="image img-thumbnail" alt="Image" style="height: 300px; width: 400px;">
                          </a>
                      </div>
                  </div>
@@ -62,14 +60,23 @@
         </div>
     </div>
     {% endfor %}
-
-    <!-- looping through image details modal class -->
+    <div class="row">
+    <div style="margin:35px auto 0;text-align:center">
+        <a href="/" class="btn btn-success" style="padding:12px 60px; border-radius: 25px;">Discover more</a>
+        </div>
+        <div style="text-align:center;max-width:1024px;margin:auto;padding:100px 20px 0">
+        <h2>Free images you can use anywhere</h2>
+        <p style="margin:0 0 35px">
+        Picsabay is a vibrant community of creatives, sharing copyright free images and videos. All contents are released under the Pixabay License, which makes them safe to use without asking for permission or giving credit to the artist - even for commercial purposes.
+        <a style="white-space:nowrap">Learn more...</a>
+        </p>
+    </div>
     {% for image in images %}
         <div class="modal fade" id="myModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Image Post</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">{{image.name | title}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -77,23 +84,21 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-9 col-lg-9">
-                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Image" style="cursor:pointer"></a>
+                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Image" style="cursor:pointer; height: 500px; width: 100%;"></a>
                             </div>
                             <div class="col-md-3">
-                                <h4>Location</h4>
+                                <h5>Description</h5>
+                                <p>{{image.description}}</p>
+                                <h6>Location</h6>
                                 <p>{{image.location.name}}</p>
-                                <h4>Category</h4>
+                                <h6>Category</h6>
                                 <p>{{image.category.name}}</p>
-                            </div>
-                            <div>
-                                <h2 class="desc">{{image.name}}</h2>
-                                <p class="desc">{{image.description}}</p>
+                                <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url}}" onclick="copyURL(this.value)">Copy img location</button>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url}}" onclick="copyURL(this.value)">Copy URL</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                     </div>
                 </div>
             </div>

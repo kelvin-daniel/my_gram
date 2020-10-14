@@ -11,11 +11,10 @@ def index(request):
     return render(request, 'index.html',{'title':title,'images':images, 'locations': locations, 'category': category})
 
 
-def locations(request,location):
-    locations = Location.objects.all()
-    images = Image.filter_by_location(location)
-    title = f'Picsabay| {location}'
-    return render(request, 'location.html', {'title':title, 'images':images, 'locations': locations})
+def imageLocation(request,location_name):
+    images = Image.objects.filter(location__name = location_name)
+    message = f"{location_name}"
+    return render(request, 'location.html', {'images':images, 'message': message})
 
 def single(request,category_name,image_id):
     title='Picsabay'
@@ -28,13 +27,12 @@ def single(request,category_name,image_id):
 
 def search_image(request):
     categories = Category.objects.all()
-    locations = Location.objects.all()
     title = 'Search| Picsabay'
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
         results = Image.search_by_category(search_term)
         message = f"{search_term}"
-        return render(request, 'search.html',{'title':title, 'images': results, 'message': message, 'categories': categories, "locations":locations})
+        return render(request, 'search.html',{'title':title, 'images': results, 'message': message, 'categories': categories})
     else:
         message = 'Did not find anything to search'
         return render(request, 'search.html',{"message": message})

@@ -21,16 +21,16 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,category):
-        searched_images = cls.objects.filter(category__name__icontains=category)
+        searched_images = cls.objects.filter(category__name=category)
         return searched_images
 
     def get_image_by_id(cls):
         images = cls.objects.all()
         return images
-   
+    
     def filter_by_location(cls,location):
-        location = Image.objects.filter(location__name=location).all()
-        return location
+        filtered_location = cls.objects.filter(location__name=location)
+        return filtered_location
 
     class Meta:
         verbose_name='Image'

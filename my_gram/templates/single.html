@@ -4,10 +4,9 @@
 
 {{block.super}}
 
-<!-- displaying images -->
 <div class="container wrap">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" id="sings">
             <div class="p-2 mb-4" style="background-color: #d4d1d1; border-radius: 2px;">
                 <h4>{{image.name}}</h4>
                 <hr>
@@ -17,7 +16,7 @@
             <div class="p-2" style="background-color: #d4d1d1; border-radius: 15px;">
                 <a class="tooltip-test" href="https://github.com/kelvin-daniel" target="_blank"><i class="fab fa-github"></i> Follow Picsabay</a>
             </div>
-            <div class="p-2 mt-5" style="background-color: #d4d1d1; border-radius: 15px;">
+            <div class="p-2 mt-5 mb-5" style="background-color: #d4d1d1; border-radius: 15px;">
                 <p class="text-center">Picsabay License <hr></p>
                 <p class="pl-2">Free for Commercial Use.</p>
                 <p class="pl-2">No Attribution Required.</p>
@@ -27,18 +26,17 @@
              <div class="portfolio-wrap ">
                  <div class="portfolio-wrap">
                      <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
-                         <img src="{{image.image.url}}" href="#" class="image" alt="Image" >
+                         <img src="{{image.image.url}}" href="#" class="image img-fluid img-thumbnail" alt="Image" style="height:100vh;" >
                      </a>
                  </div>
-                 <!--related images -->
                 <div class="container-fluid wrap">
                     <div class="row" style="background-color: #d4d1d1;">
                     {% for image in category %}
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                             <div class="portfolio-wrap ">
                                 <div class="portfolio-wrap hovereffect">
-                                    <a class="img-overlay p-3" data-toggle="#myModal" data-target="#myModal{{image.id}}" style="width:100%" >
-                                        <img src="{{image.image.url}}" href="#myModal" class="image" alt="Image" >
+                                    <a class="img-overlay p-3" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%" >
+                                        <img src="{{image.image.url}}" href="#myModal" class="image img-fluid img-thumbnail" alt="Image" style="height: 150px; width: 100%; border-radius: 5px;">
                                     </a>
                                 </div>
                             </div>
@@ -49,7 +47,7 @@
                         <img src="" alt="">
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 p-4">
-                        <h5 class="text-center"> : (&nbsp; We Didn't Find Any Related Images</h5>
+                        <h5 class="text-center"> : (&nbsp; No Related Images</h5>
                     </div>
                     {% endfor %}
                 </div>

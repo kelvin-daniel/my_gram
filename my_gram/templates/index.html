@@ -5,25 +5,24 @@
 
 {{block.super}}
 <!-- Landing Page -->
-<div class="banner" style="background: linear-gradient(135deg, rgba(22, 22, 22, 0.3) 0%, rgba(15, 15, 15, 0.3) 100%), url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat; background-size: cover;">
+<div class="banner" style="background: linear-gradient(135deg, rgba(22, 22, 22, 0.3) 0%, rgba(15, 15, 15, 0.3) 100%), url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg') no-repeat, center; background-size: cover;">
     <div class="cover" style="height: 100vh;">
         <div class="container image">
-            <h2 id="category" class="text-white mt-2 mb-2">Stunning free images & royalty free stock</h2>
-            <p class="text-white mt-3 pb-4">Over 1.8 million+ high quality stock images and videos shared by our talented community.</p>
+            <h2 id="category" class="text-white" style="padding-top: 80px;">Stunning free images & royalty free stock</h2>
+            <p class="text-white mt-2 pb-4">Over 1.8 million+ high quality stock images and videos shared by our talented community.</p>
             <form class="form search_xl" role="search" action="{% url 'search_image' %}">
 
                 <div class="input-group">
                   <input type="text" style="height: 60px; border-radius: 5px;" class="form-control form-control-lg form-control-borderless" placeholder="&#xf3ee;&nbsp; Search categories" name="category">
                   <br>
                  </div>
-                 <p class="mt-2">Popular Images: landscape, travel</p>
-                 <p style="padding-top: 120px;">Free image by Pezibear</p>
+                 <p class="mt-2" style="color: rgb(216, 216, 216);">Popular Images: landscape, travel,nature, cars, home...</p>
+                 <p style="padding-top: 50px;">Free image by Pezibear</p>
               </form>
         </div>
     </div>
 </div>
 
-<!----all site images-->
 <div class="container wrap">
     <div class="row" id="gallery">
     {% for image in images %}
@@ -31,7 +30,7 @@
                  <div class="portfolio-wrap ">
                      <div class="portfolio-wrap hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
-                             <img src="{{image.image.url}}" href="#myModal" class="image img-fluid" alt="Photo" style="height: 250px; width: 400px;">
+                             <img src="{{image.image.url}}" href="#myModal" class="image img-fluid img-thumbnail" alt="Photo" style="height: 250px; width: 400px;">
                          </a>
                      </div>
                  </div>
@@ -47,38 +46,45 @@
         </div>
     </div>
     {% endfor %}
-
-    <!-- Image details modal -->
+    <div class="row">
+    <div style="margin:35px auto 0;text-align:center">
+        <a href="#gallery" class="btn btn-success" style="padding:12px 60px; border-radius: 25px;">Discover more</a>
+        </div>
+        <div style="text-align:center;max-width:1024px;margin:auto;padding:100px 20px 0">
+        <h2>Free images you can use anywhere</h2>
+        <p style="margin:0 0 35px">
+        Picsabay is a vibrant community of creatives, sharing copyright free images and videos. All contents are released under the Pixabay License, which makes them safe to use without asking for permission or giving credit to the artist - even for commercial purposes.
+        <a style="white-space:nowrap">Learn more...</a>
+        </p>
+    </div>
     {% for image in images %}
         <div class="modal fade" id="myModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true" style="border-radius: 10px;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header bg-dark" style="border-radius: 5px;">
-                        <h4 class="modal-title pl-5 text-white" id="deleteModalLabel">{{image.name}}</h4>
+                    <div class="modal-header" style="border-radius: 5px;">
+                        <h5 class="modal-title pl-5 " id="deleteModalLabel">{{image.name | title}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Photo" style="cursor:pointer"></a>
+                            <div class="col-md-9 col-lg-9">
+                                <a href="{% url 'single' category_name=image.category.name image_id=image.id %}"><img id="img{{image.id}}" src="{{image.image.url}}" class="img-thumbnail" alt="Photo" style="cursor:pointer; height: 80vh; width: 100%;" ></a>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h4 class = "desc">Location</h4>
-                                <p>{{image.location.name}}</p>
-                                <h4 class = "desc">Category</h4>
-                                <p>{{image.category.name}}</p>
-                            </div>
-                            <div>
-                                <h2 class="desc">{{image.name}}</h2>
-                                <p class="desc">{{image.description}}</p>
-                            </div>
+                        <div class="col-md-3">
+                            <h5>Description</h5>
+                            <p>{{image.description}}</p>
+                            <h6>Location</h6>
+                            <p>{{image.location.name}}</p>
+                            <h6>Category</h6>
+                            <p>{{image.category.name}}</p>
+                            <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url}}" onclick="copyURL(this.value)">Copy img location</button>
+                        </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-info" value="https://picsabay.herokuapp.com{{ image.image.url}}" onclick="copyURL(this.value)">Copy URL</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        
                     </div>
                 </div>
             </div>
