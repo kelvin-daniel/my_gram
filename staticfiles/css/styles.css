@@ -129,7 +129,7 @@ height: 100vh;
     width: inherit;
 }
 .banner-1{
-    background-image: url('https://cdn.pixabay.com/index/2020/10/05/10-04-19-563_1440x480.jpg'); 
+    background-image: url('https://cdn.pixabay.com/index/2020/10/13/10-40-22-470_1440x480.jpg'); 
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -165,8 +165,26 @@ height: 100vh;
     margin: 5em auto 1em;
     width: 70%;
 }
+.hovereffect {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
 
-.oops{
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+  margin-bottom: 7px;
+}
+
+.portfolio-wrap {
+    padding: 0 4px;
+}
+.sorry{
     text-align: center;
     width: 100%;
 }
@@ -187,25 +205,6 @@ div.col-xs-6.col-sm-6.col-md-4.col-lg-3{
     text-transform: uppercase;
     letter-spacing: 7px;
 
-}
-.hovereffect {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-}
-
-.hovereffect img {
-  display: block;
-  position: relative;
-  -webkit-transition: all 0.35s;
-  transition: all 0.35s;
-  margin-bottom: 7px;
-}
-
-.portfolio-wrap {
-    padding: 0 4px;
 }
 
 h2,p.desc{
@@ -335,7 +334,35 @@ h5.modal-title{
     }
 
 }
+@media screen and (min-width: 501px) and (max-width: 1200px){
+    .banner{
+        min-height: 500px;
+    }
+    .cover{
+        min-height: 500px;
+    }
 
+}
+
+@media screen and (max-width: 1200px){
+    .social{
+        display: none;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 780px){
+    .banner{
+        height: 75vh;
+    }
+    .cover-1{
+        min-height: 300px;
+    }
+}
+@media screen and (min-width: 456px){
+div img.splash{
+    max-width: 436px;
+    max-height: 245
+}
+}
 @media screen and (min-width: 456px) and (max-width: 500px){
     .banner{
         height: 60vh;
@@ -422,33 +449,4 @@ h5.modal-title{
         margin: 0px;
     }
 
-}
-@media screen and (min-width: 501px) and (max-width: 1200px){
-    .banner{
-        min-height: 500px;
-    }
-    .cover{
-        min-height: 500px;
-    }
-
-}
-
-@media screen and (max-width: 1200px){
-    .social{
-        display: none;
-    }
-}
-@media screen and (min-width: 500px) and (max-width: 780px){
-    .banner{
-        height: 75vh;
-    }
-    .cover-1{
-        min-height: 300px;
-    }
-}
-@media screen and (min-width: 456px){
-div img.splash{
-    max-width: 436px;
-    max-height: 245
-}
 }
