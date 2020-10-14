@@ -10,8 +10,8 @@ class Image(models.Model):
     image = CloudinaryField('image')
 
     @classmethod
-    def update_image(self):
-        pass
+    def update_image(cls, id, value):
+        cls.objects.filter(id=id).update(image=value)
 
     def save_image(self):
         self.save()
@@ -23,11 +23,11 @@ class Image(models.Model):
     def search_by_category(cls,category):
         searched_images = cls.objects.filter(category__name=category)
         return searched_images
-
-    def get_image_by_id(cls):
-        images = cls.objects.all()
+    @classmethod
+    def get_image_by_id(cls,id):
+        images = cls.objects.filter(id=id).all()
         return images
-    
+    @classmethod
     def filter_by_location(cls,location):
         filtered_location = cls.objects.filter(location__name=location)
         return filtered_location
@@ -67,7 +67,7 @@ class Location(models.Model):
     name = models.CharField(max_length=40)
 
     @classmethod
-    def get_location_id(cls):
+    def get_location(cls):
         location = Location.objects.all()
         return location
 

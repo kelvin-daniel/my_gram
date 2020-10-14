@@ -5,7 +5,7 @@ check:
 	./manage.py check
 
 test:
-	./manage.py test my_gram
+	coverage run ./manage.py test
 	
 superuser:
 	./manage.py createsuperuser --username $(name)
@@ -21,4 +21,7 @@ migrate:
 
 start:
 	django-admin startapp $(name)
+
+report:
+	coverage html
 
