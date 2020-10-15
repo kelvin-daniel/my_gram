@@ -226,7 +226,7 @@ h5.modal-title{
 
 @media screen and (max-width: 455px){
     .banner{
-        height: 60vh;
+        height: 70vh;
     }
     #over{
         display: none;
