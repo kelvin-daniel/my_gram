@@ -228,6 +228,9 @@ h5.modal-title{
     .banner{
         height: 60vh;
     }
+    #over{
+        display: none;
+    }
     .cover{
         min-height: 600px;
     }
