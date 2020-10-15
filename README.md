@@ -3,6 +3,8 @@ This is a django app built to mimic pixabay using different technologies I've le
 
 ## Deployed Site Link
 [Picsabay](https://picsabay.herokuapp.com/)
+username: admin
+pass: admin
 
 ## User Stories
 - View different photos.
