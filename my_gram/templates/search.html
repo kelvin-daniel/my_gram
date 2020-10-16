@@ -4,7 +4,6 @@
 
 {{block.super}}
 
-<!--related images -->
 <div class="container-fluid wrap" >
     <div class="row" style="background-color: #e9e3e3;">
     {% for image in images %}
@@ -39,10 +38,10 @@
     <div class="row">
     {% for image in images %}
          <div class="col-xs-6 col-sm-6  col-md-4 col-lg-3">
-                 <div class="portfolio-wrap ">
-                     <div class="portfolio-wrap hovereffect">
+                 <div class="card ">
+                     <div class="card-body hovereffect">
                          <a class="img-overlay" data-toggle="modal" data-target="#myModal{{image.id}}" style="width:100%">
-                             <img src="{{image.image.url}}" href="#myModal" class="image img-thumbnail" alt="Image" style="height: 300px; width: 400px;">
+                             <img src="{{image.image.url}}" href="#myModal" class="card-img" alt="Image" style="height: 300px; width: 400px;">
                          </a>
                      </div>
                  </div>
